@@ -1,0 +1,3 @@
+#Stuff that could noot  be installed when importing environment from  yaml
+jaxlib==0.1.67
+git+https://github.com/SainsburyWellcomeCentre/GoalSelection

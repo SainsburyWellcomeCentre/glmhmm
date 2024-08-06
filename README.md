@@ -33,8 +33,16 @@ Each jupyter notebook in the <b>figures</b> folder recreates the plots from a sp
 * extdatafig9: shows how model simulations recapitulate characteristics of the real data
 * suppfig4: shows how individual mice occupy different states for each session of the task
 
+### Fork installation
+Create their environment, then install the requirements (jax may  be  painful,maybe ignoreit for now), but it includes GoalSelection, which is the package I'm writing for the setup data (maybe in the future  flexivexi, when we merge?)
+````
+conda env create -n glmhmm --file env.yml    
+pip install -e . 
+````
+
 
 ### Installation
+
 For easy installation, download the code using the link above or type the following into a terminal window:
 ```
 git clone https://github.com/irisstone/glmhmm.git

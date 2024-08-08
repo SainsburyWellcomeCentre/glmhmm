@@ -1,5 +1,5 @@
 # glmhmm
-This package provides flexible and easy-to-use code for fitting Generalized Linear Models (GLMs), Hidden Markov Models (HMMs), and combination GLM-HMMs (also known as Input-Output HMMs or IO-HMMs). The GLM code include options for fitting observational data of either Bernoulli or Multinomial distributions. HMM inference is done using the Expectation Maximization (EM) algorithm, with an optional mode for performing deterministic-annealing EM (DAEM), which is useful for hard to fit datasets.   
+This package provides flexible and easy-to-use code for fitting Generalized Linear Models (GLMs), Hidden Markov Models (HMMs), and combination GLM-HMMs (also known as Input-Output HMMs or IO-HMMs). The GLM code include options for fitting observational data of either Bernoulli or Multinomial distributions. HMM inference is done using the Expectation Maximization (EM) algorithm, with an optional mode for performing deterministic-annealing EM (DAEM), which is useful for hard to fit datasets.  
 
 ### Package Contents
 
@@ -34,9 +34,12 @@ Each jupyter notebook in the <b>figures</b> folder recreates the plots from a sp
 * suppfig4: shows how individual mice occupy different states for each session of the task
 
 ### Fork installation
-Create their environment, then install the requirements (jax may  be  painful,maybe ignoreit for now), but it includes GoalSelection, which is the package I'm writing for the setup data (maybe in the future  flexivexi, when we merge?)
+Create their environment, then install the requirements, but it includes GoalSelection, which is the package I'm writing for the setup data (maybe in the future flexivexi, when we merge?)
+
+You will need access to GoalSelection (or its successor), which is private by now.
 ````
-conda env create -n glmhmm --file env.yml    
+conda env create -n glmhmm --file env.yml 
+pip install jaxlib==0.1.71 -f https://storage.googleapis.com/jax-releases/jax_releases.html 
 pip install -e . 
 ````
 
@@ -47,4 +50,4 @@ For easy installation, download the code using the link above or type the follow
 ```
 git clone https://github.com/irisstone/glmhmm.git
 ```
-For convenience, we recommend setting up a virtual environment before running the code, to avoid any unpleasant version control issues or interactions with other projects you're working on. See the env.yml file for configuration details. Note the package requires python 3.7 to run.  
+For convenience, we recommend setting up a virtual environment before running the code, to avoid any unpleasant version control issues or interactions with other projects you're working on. See the env.yml file for configuration details. Note the package requires python 3.7 to run. 

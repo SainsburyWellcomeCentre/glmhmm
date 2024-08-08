@@ -18,12 +18,18 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/acolasn/glmhmm",
     packages=find_packages(),  # Automatically find and include all packages
-    install_requires=requirements,
+    install_requires=[
+        'jaxlib==0.1.71',
+        'scikit-learn'
+    ],
+    dependency_links=[
+        'https://github.com/SainsburyWellcomeCentre/GoalSelection'
+    ],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires="==3.7",
+    python_requires="==3.7.3",
  
 )

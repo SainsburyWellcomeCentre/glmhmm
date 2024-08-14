@@ -10,7 +10,7 @@ PORTS = [[0.6, 0.35],
          [-0.6, 0.35], 
          [0, -0.7]]
 
-def design_matrix_per_mouse(mouse, start_session = -10):
+def design_matrix_per_mouse(mouse, start_session = -10, bias =  True):
 
     date_dirs = tm.get_date_dirs(mouse)
     date_dirs = date_dirs[start_session:]
@@ -25,7 +25,7 @@ def design_matrix_per_mouse(mouse, start_session = -10):
         #build the matrix
         exp_data = tm.build_exp_data(mouse, date)
         filtered_data = filter_data(exp_data)
-        design, y = build_design_matrix(filtered_data)
+        design, y = build_design_matrix(filtered_data, bias =  bias)
         design_list.append(design)
         output_list.append(y)
         date_list.append([date]*len(design))
@@ -36,7 +36,7 @@ def design_matrix_per_mouse(mouse, start_session = -10):
     date_concat = np.concatenate(date_list)
     trial_concat =  pd.concat(trial_list, ignore_index = True)
 
-    X = format_matrix(design_concat)
+    X = format_matrix(design_concat, bias =  bias)
     row_identity = pd.DataFrame({'date': date_concat, 
                                 'trial': trial_concat})
 
@@ -212,6 +212,7 @@ def format_matrix(design, bias = True):
     '''
     if bias:
         X = np.array([
+            design['bias'].tolist(),
             design['cue'].tolist(), 
             design['last_1'].tolist(), 
             design['last_2'].tolist(), 
@@ -220,8 +221,7 @@ def format_matrix(design, bias = True):
             design['last_5'].tolist(), 
             design['last_rewarded'].tolist(),
             design['distance_0'].tolist(),
-            design['distance_1'].tolist(), 
-            design['bias'].tolist()
+            design['distance_1'].tolist()
         ])
     else:
         X = np.array([
